@@ -45,6 +45,10 @@ const Navbar = ({ admin }) => {
     }
   };
 
+  const handleCheckout = () => {
+    navigate(import.meta.env.BASE_URL + "checkout");
+  }
+
   return (
     <nav className="navbar navbar-dark bg-primary">
       <div className="container-fluid">
@@ -63,6 +67,7 @@ const Navbar = ({ admin }) => {
           {admin && (
             <button onClick={handleAdmin} className="btn btn-secondary me-2">{adminButtonText}</button>
           )}
+          <button onClick={handleCheckout} className="btn btn-secondary me-2">Deposit</button>
           <button onClick={handleAuth} className="btn btn-secondary me-2">{authButtonText}</button>
         </div>
       </div>

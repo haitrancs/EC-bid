@@ -14,10 +14,11 @@ import Navbar from "./components/Navbar";
 import { SignUpModal } from "./components/Modal";
 import HomePage from "./pages/Home";
 import AdminPage from "./pages/Admin";
+import CheckoutPage from "./pages/Checkout";
 import Footer from "./components/Footer";
 
 function App() {
-  const demo = true;
+  const demo = false;
 
   const { admin } = AutoSignIn();
 
@@ -40,6 +41,7 @@ function App() {
         <SignUpModal />
         <Routes>
           <Route path={import.meta.env.BASE_URL} Component={HomePage} />
+          <Route path={import.meta.env.BASE_URL + "checkout"} Component={CheckoutPage} />
           <Route
             exact
             path={import.meta.env.BASE_URL + "admin"}

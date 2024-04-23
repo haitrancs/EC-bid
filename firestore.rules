@@ -1,0 +1,32 @@
+  rules_version = '2';
+  service cloud.firestore {
+    match /databases/{database}/documents {
+      // Checks that new data doesn't overwrite or delete an existing bid
+      function isFieldOverWrite() {
+        let editedKeys = request.resource.data.diff(resource.data);
+        return editedKeys.changedKeys().union(editedKeys.removedKeys()).size() > 0
+      }
+      // Checks user has anonymous account and has "signed up" (i.e. provided a displayName)
+      function isLoggedIn() {
+        return request.auth != null && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+      }
+      // Checks the user is logged in and if their user data contains the admin password
+      function isAdmin() {
+        return isLoggedIn() && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.admin == "insert long random secret string"
+      }
+      // Make sure the uid of the requesting user matches name of the user
+      // document. The wildcard expression {userId} makes the userId variable
+      // available in rules.
+      match /users/{userId} {
+        allow read, update, delete: if isAdmin() || request.auth != null && request.auth.uid == userId;
+        allow create: if request.auth != null && request.auth.uid == userId;
+      }
+      // Auction can always be read, updated only if the user is logged in and
+      // isn't overwiting someone else's bid, and created or deleted by admins
+      match /auction/items {
+        allow get, list: if true;
+        allow update : if isAdmin() || isLoggedIn() && !isFieldOverWrite()
+        allow create, delete: if isAdmin();
+      }
+    }
+  }

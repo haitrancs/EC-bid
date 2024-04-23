@@ -1,16 +1,21 @@
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Web app's Firebase configuration
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCAYOYDuMKGGjTSJL5uDzG5hjQ6y_vYPiI",
-  authDomain: "auction-website-b12fc.firebaseapp.com",
-  databaseURL: "https://auction-website-b12fc.firebaseio.com",
-  projectId: "auction-website-b12fc",
-  storageBucket: "auction-website-b12fc.appspot.com",
-  messagingSenderId: "791747024664",
-  appId: "1:791747024664:web:215a222a81c6d0c2aeb06d",
+  apiKey: "AIzaSyB_psaKzxmgMDKrx63tbhh-bcQ-AKYDpJQ",
+  authDomain: "ec-bid.firebaseapp.com",
+  databaseURL: "https://ec-bid-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "ec-bid",
+  storageBucket: "ec-bid.appspot.com",
+  messagingSenderId: "336214138183",
+  appId: "1:336214138183:web:6be1ccb769f2aaad354062",
+  measurementId: "G-5CTDLF80CY"
 };
 
 // Initialize Firebase
