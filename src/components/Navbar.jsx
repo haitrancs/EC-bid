@@ -50,25 +50,25 @@ const Navbar = ({ admin }) => {
   }
 
   return (
-    <nav className="navbar navbar-dark bg-primary">
+    <nav className="navbar navbar-dark bg-info">
       <div className="container-fluid">
-        <div className="navbar-brand mb-0 h1 me-auto">
+        <div className="navbar-brand mb-0 h1">
           <img
             src={import.meta.env.BASE_URL + "logo.png"}
             alt="Logo"
-            width="30"
-            height="24"
+            width="auto"
+            height="35"
             className="d-inline-block align-text-top"
           />
-          The Markatplace
+          The Marketplace
         </div>
         <div className="row row-cols-auto">
           <div className="navbar-brand">{user}</div>
           {admin && (
-            <button onClick={handleAdmin} className="btn btn-secondary me-2">{adminButtonText}</button>
+            <button onClick={handleAdmin} className="btn btn-primary me-2">{adminButtonText}</button>
           )}
-          <button onClick={handleCheckout} className="btn btn-secondary me-2">Deposit</button>
-          <button onClick={handleAuth} className="btn btn-secondary me-2">{authButtonText}</button>
+          <button onClick={handleCheckout} className="btn btn-primary me-2">Deposit</button>
+          <button onClick={handleAuth} className="btn btn-primary me-2">{authButtonText}</button>
         </div>
       </div>
     </nav>

@@ -20,6 +20,33 @@ html * {
   width: 50% !important;
 }
 
+.checkout iframe {
+  position: relative !important;
+  z-index: 0 !important;
+}
+
 .checkout select {
   height: 40px;
+}
+
+.navbar-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar {
+  position: sticky !important;
+  top: 0;
+  z-index: 100;
+}
+
+.image-group {
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
 }

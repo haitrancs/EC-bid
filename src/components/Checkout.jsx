@@ -40,16 +40,25 @@ const Checkout = () => {
       {isPending ? <p>LOADING...</p> : 
         (
           <>
-            <span className="mb-0">Please choose your currency to checkout:</span>
+            <h2 className="mb-0 w-auto">PayPal</h2>
+            <label className="mb-0">Please choose your currency:</label>
             <select className="form-select" aria-label="currency" value={currency} onChange={onCurrencyChange}>
               <option value="USD">💵 USD</option>
               <option value="EUR">💶 Euro</option>
             </select>
+            <label htmlFor="">Enter the amount you want to deposit:</label>
+            <input type="number" className="form-control"/>
             <PayPalButtons 
               style={{ layout: "vertical", height: 40, disableMaxWidth: false }}
               createOrder={(data, actions) => onCreateOrder(data, actions)}
               onApprove={(data, actions) => onApproveOrder(data, actions)}
             />
+            <div className="container-fluid image-group">
+              <img src={import.meta.env.BASE_URL + "visa.png"} alt="" srcSet="" width="100%"/>
+              <img src={import.meta.env.BASE_URL + "mastercard.png"} alt="" srcSet="" width="100%"/>
+              <img src={import.meta.env.BASE_URL + "amex.png"} alt="" srcSet="" width="100%"/>
+              <img src={import.meta.env.BASE_URL + "discover.png"} alt="" srcSet="" width="100%"/>
+            </div>
         </>
       )}
     </div>
